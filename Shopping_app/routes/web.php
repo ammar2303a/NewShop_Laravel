@@ -6,6 +6,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view("/home", 'admin.Home');
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
