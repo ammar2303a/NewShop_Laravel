@@ -2,11 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-// Route::get('/', function () {
+// Route::get('/welcome', function () {
 //     return view('welcome');
 // });
 
-Route::view("/admindashborad", 'admin.Home');
+Route::view("/admindashboard", 'admin.Home')->middleware('auth');
 Route::view("/", 'home.Home');
 Route::view("/about", 'home.About');
 Route::view("/service", 'home.Services');
