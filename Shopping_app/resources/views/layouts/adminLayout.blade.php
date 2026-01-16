@@ -25,6 +25,8 @@
   </title>
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700,900" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <!-- Nucleo Icons -->
   <link href="{{ asset('admin/assets/css/nucleo-icons.css') }}" rel="stylesheet" />
   <link href="{{ asset('admin/assets/css/nucleo-svg.css') }}" rel="stylesheet" />
@@ -32,6 +34,7 @@
   <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
   <!-- Material Icons -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('admin/assets/css/material-dashboard.css') }}" rel="stylesheet" />
 </head>
@@ -46,67 +49,79 @@
       </a>
     </div>
     <hr class="horizontal dark mt-0 mb-2">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+    <ul class="navbar-nav">
+
+        <!-- Dashboard -->
         <li class="nav-item">
-          <a class="nav-link active bg-gradient-dark text-white" href="{{asset('pages/dashboard.html') }}">
-            <i class="material-symbols-rounded opacity-5">dashboard</i>
-            <span class="nav-link-text ms-1">Dashboard</span>
-          </a>
+            <a class="nav-link active bg-gradient-dark text-white" href="{{ url('/admindashboard') }}">
+                <i class="material-symbols-rounded opacity-5">dashboard</i>
+                <span class="nav-link-text ms-1">Dashboard</span>
+            </a>
         </li>
+
+        <!-- Categories -->
         <li class="nav-item">
-          <a class="nav-link text-dark" href="{{ asset('admin/pages/tables.html') }}">
-            <i class="material-symbols-rounded opacity-5">table_view</i>
-            <span class="nav-link-text ms-1">Tables</span>
-          </a>
+            <a class="nav-link text-dark" href="{{ url('/admin/categories') }}">
+                <i class="material-symbols-rounded opacity-5">category</i>
+                <span class="nav-link-text ms-1">Categories</span>
+            </a>
         </li>
+
+        <!-- Products -->
         <li class="nav-item">
-          <a class="nav-link text-dark" href="{{ asset('admin/pages/billing.html') }}">
-            <i class="material-symbols-rounded opacity-5">receipt_long</i>
-            <span class="nav-link-text ms-1">Billing</span>
-          </a>
+            <a class="nav-link text-dark" href="/addproduct">
+                <i class="material-symbols-rounded opacity-5">inventory_2</i>
+                <span class="nav-link-text ms-1">Products</span>
+            </a>
         </li>
+
+        <!-- Users -->
         <li class="nav-item">
-          <a class="nav-link text-dark" href="{{ asset('admin/pages/virtual-reality.html') }}">
-            <i class="material-symbols-rounded opacity-5">view_in_ar</i>
-            <span class="nav-link-text ms-1">Virtual Reality</span>
-          </a>
+            <a class="nav-link text-dark" href="{{ url('/admin/users') }}">
+                <i class="material-symbols-rounded opacity-5">group</i>
+                <span class="nav-link-text ms-1">Users</span>
+            </a>
         </li>
+
+        <!-- Orders -->
         <li class="nav-item">
-          <a class="nav-link text-dark" href="{{ asset('admin/pages/rtl.html') }}">
-            <i class="material-symbols-rounded opacity-5">format_textdirection_r_to_l</i>
-            <span class="nav-link-text ms-1">RTL</span>
-          </a>
+            <a class="nav-link text-dark" href="{{ url('/admin/orders') }}">
+                <i class="material-symbols-rounded opacity-5">shopping_cart</i>
+                <span class="nav-link-text ms-1">Orders</span>
+            </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="{{ asset('admin/pages/notifications.html') }}">
-            <i class="material-symbols-rounded opacity-5">notifications</i>
-            <span class="nav-link-text ms-1">Notifications</span>
-          </a>
-        </li>
+
+        <!-- Account Pages Section -->
         <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-5">Account pages</h6>
+            <h6 class="ps-4 ms-2 text-uppercase text-xs text-dark font-weight-bolder opacity-5">
+                Account
+            </h6>
         </li>
+
+        <!-- Profile -->
         <li class="nav-item">
-          <a class="nav-link text-dark" href="{{ asset('admin/pages/profile.html')}}">
-            <i class="material-symbols-rounded opacity-5">person</i>
-            <span class="nav-link-text ms-1">Profile</span>
-          </a>
+            <a class="nav-link text-dark" href="{{ url('/admin/profile') }}">
+                <i class="material-symbols-rounded opacity-5">person</i>
+                <span class="nav-link-text ms-1">Profile</span>
+            </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="{{ asset('admin/pages/sign-in.html') }}">
-            <i class="material-symbols-rounded opacity-5">login</i>
-            <span class="nav-link-text ms-1">Sign In</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-dark" href="{{ asset('admin/pages/sign-up.html') }}">
-            <i class="material-symbols-rounded opacity-5">assignment</i>
-            <span class="nav-link-text ms-1">Sign Up</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+
+        <!-- Logout -->
+        <!-- <li class="nav-item">
+    <form method="POST" action="{{ route('logout') }}" style="display: contents;">
+        @csrf
+        <button type="submit" class="nav-link text-dark d-flex align-items-center" style="all: unset; width: 100%; cursor: pointer;">
+            <i class="material-symbols-rounded opacity-5">logout</i>
+            <span class="nav-link-text ms-1">Logout</span>
+        </button>
+    </form>
+</li> -->
+
+
+    </ul>
+</div>
+
     <div class="sidenav-footer position-absolute w-100 bottom-0 ">
       <div class="mx-3">
         <a class="btn btn-outline-dark mt-4 w-100" href="https://www.creative-tim.com/learning-lab/bootstrap/overview/material-dashboard?ref=sidebarfree" type="button">Documentation</a>
@@ -182,12 +197,13 @@
         <div class="w-100 text-center">
           <a class="github-button" href="https://github.com/creativetimofficial/material-dashboard" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star creativetimofficial/material-dashboard on GitHub">Star</a>
           <h6 class="mt-3">Thank you for sharing!</h6>
-          <a href="https://twitter.com/intent/tweet?text=Check%20Material%20UI%20Dashboard%20made%20by%20%40CreativeTim%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fsoft-ui-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
-            <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
-          </a>
-          <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/material-dashboard" class="btn btn-dark mb-0 me-2" target="_blank">
-            <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
-          </a>
+          <form method="POST" action="{{ route('logout') }}" class="d-inline">
+    @csrf
+    <button type="submit" class="btn btn-dark mb-0 me-2">
+        <i class="material-symbols-rounded me-1">logout</i> Logout
+    </button>
+</form>
+
         </div>
       </div>
     </div>
@@ -440,6 +456,7 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Github buttons -->
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->

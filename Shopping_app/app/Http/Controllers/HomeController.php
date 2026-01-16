@@ -7,15 +7,18 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
     public function index()
+{
+    return view('home.Home');
+}
+
+    
+
+    public function about()
     {
-        $user = Auth::user();
+        return view('home.About');
+    }
 
-        // Admin
-        if ($user->role === 'admin') {
-            return redirect('/admindashboard');
-        }
-
-        // Normal User (Jetstream dashboard)
-        return redirect('/');
+    public function service(){
+        return view('home.Services');
     }
 }

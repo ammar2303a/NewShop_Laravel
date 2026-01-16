@@ -70,13 +70,34 @@
           <li><a href="pricing.html">Pricing</a></li>
           <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact</a></li>
-          <li><a href="{{ route('login') }}">Login</a></li>
-          <li><a href="{{ route('register') }}">Register</a></li>
+          @guest
+    <li><a href="{{ route('login') }}">Login</a></li>
+    <li><a href="{{ route('register') }}">Register</a></li>
+@endguest
+
+@auth
+    <li>
+        <form method="POST" action="{{ route('logout') }}" style="display: inline;">
+            @csrf
+            <button type="submit" style="all: unset; cursor: pointer;">
+                Logout
+            </button>
+        </form>
+    </li>
+@endauth
+
+
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+</nav>
 
-      <a class="btn-getstarted" href="about.html">Get Started</a>
+@auth
+  
+    <a class="btn-getstarted" href="#">{{ auth()->user()->name }}</a>
+@else
+    <a class="btn-getstarted" href="{{ route('login') }}">Get Started</a>
+@endauth
+
 
     </div>
   </header>
