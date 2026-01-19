@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ProductController;
 
 // Route::get('/welcome', function () {
 //     return view('welcome');
@@ -32,4 +33,11 @@ Route::middleware([
 
 })->name('dashboard');
 
-Route::get('/addproduct',[AdminController::class, 'addproduct']);
+Route::get('/addproduct',[ProductController::class, 'addproduct']);
+
+
+// products
+
+
+
+Route::post('/add-product', [ProductController::class, 'storeproduct'])->name('product.store');

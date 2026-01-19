@@ -139,55 +139,76 @@
 <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
-      
+
+      <!-- Modal Header -->
       <div class="modal-header">
         <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
-      <form action="" method="POST" enctype="multipart/form-data">
+      <!-- Form START -->
+      <form action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+
+        <!-- Modal Body -->
         <div class="modal-body">
-            <!-- Product Name -->
-            <div class="mb-3">
-                <label for="name" class="form-label">Product Name</label>
-                <input type="text" name="name" class="form-control form-control-lg" id="name" placeholder="Enter product name" required>
 
-            </div>
+          <!-- Product Name -->
+          <div class="mb-3">
+            <label for="pname" class="form-label fw-semibold text-dark">Product Name</label>
+            <input type="text" name="pname" id="pname" class="form-control" placeholder="Enter product name" required>
+          </div>
 
-            <!-- Product Image -->
-            <div class="mb-3">
-                <label for="image" class="form-label">Product Image</label>
-                <input type="file" name="image" class="form-control" id="image" required>
-            </div>
+          <!-- Product Description -->
+          <div class="mb-3">
+            <label for="desc" class="form-label fw-semibold text-dark">Product Description</label>
+            <textarea name="desc" id="desc" class="form-control" rows="3" placeholder="Enter product description"></textarea>
+          </div>
 
-            <!-- Price -->
-            <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="number" name="price" class="form-control" id="price" required>
-            </div>
+          <!-- Product Price -->
+          <div class="mb-3">
+            <label for="price" class="form-label fw-semibold text-dark">Product Price</label>
+            <input type="number" name="price" id="price" class="form-control" placeholder="Enter product price" required>
+          </div>
 
-            <!-- Quantity -->
-            <div class="mb-3">
-                <label for="quantity" class="form-label">Quantity</label>
-                <input type="number" name="quantity" class="form-control" id="quantity" required>
-            </div>
+          <!-- Product Quantity -->
+          <div class="mb-3">
+            <label for="quantity" class="form-label fw-semibold text-dark">Product Quantity</label>
+            <input type="number" name="quantity" id="quantity" class="form-control" placeholder="Enter product quantity" required>
+          </div>
 
-            <!-- Description -->
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea name="description" class="form-control" id="description" rows="3"></textarea>
-            </div>
+          <!-- Product Image -->
+          <div class="mb-3">
+            <label for="image" class="form-label fw-semibold text-dark">Add Image</label>
+            <input type="file" name="image" id="image" class="form-control" required>
+          </div>
+
         </div>
 
+        <!-- Modal Footer -->
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn btn-primary">Add Product</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Add Product</button>
         </div>
+
       </form>
+      <!-- Form END -->
 
     </div>
   </div>
 </div>
+
+<style>
+/* Smooth fade + slide effect */
+.modal.fade .modal-dialog {
+    transform: translateY(-30px);
+    transition: transform 0.255s ease-out, opacity 0.255s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: translateY(0);
+}
+</style>
+
 
 @endsection
