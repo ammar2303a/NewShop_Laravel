@@ -49,5 +49,65 @@
 
     </section><!-- /Hero Section -->
 
+    <div class="row gy-4 isotope-container mt-3" data-aos="fade-up" data-aos-delay="200">
+
+@foreach($products as $product)
+  <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-product">
+
+    <!-- IMAGE BOX -->
+    <div class="product-img-box">
+        <img src="{{ asset('uploads/products/'.$product->image) }}"
+             alt="{{ $product->name }}">
+    </div>
+
+    <!-- PRODUCT INFO -->
+    <div class="portfolio-info">
+      <h4>{{ $product->name }}</h4>
+
+      <p class="small text-muted">
+        {{ Str::limit($product->description, 60) }}
+      </p>
+
+      <p class="fw-bold mb-2">Rs {{ number_format($product->price) }}</p>
+
+      <a href="{{ asset('uploads/products/'.$product->image) }}"
+         data-gallery="portfolio-gallery-product"
+         class="glightbox preview-link"
+         title="{{ $product->name }}">
+         <i class="bi bi-zoom-in"></i>
+      </a>
+
+      <a href="#"
+         title="More Details"
+         class="details-link">
+         <i class="bi bi-link-45deg"></i>
+      </a>
+    </div>
+
+  </div>
+@endforeach
+
+</div>
+
+
 </mail>
+<style>
+/* IMAGE WRAPPER */
+.product-img-box {
+    width: 100%;
+    height: 400px;          /* sab images same height */
+    overflow: hidden;       /* extra part hide */
+    border-radius: 10px;
+}
+
+/* IMAGE ITSELF */
+.product-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;      /* crop karega, distort nahi */
+    display: block;
+}
+
+
+</style>
 @endsection

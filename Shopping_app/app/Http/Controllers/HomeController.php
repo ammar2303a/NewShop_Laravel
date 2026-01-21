@@ -3,12 +3,14 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
     public function index()
 {
-    return view('home.Home');
+    $products = Product::all(); 
+    return view('home.Home', compact('products'));
 }
 
     
